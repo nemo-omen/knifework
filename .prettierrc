@@ -1,7 +1,7 @@
 {
-	"useTabs": true,
-	"singleQuote": true,
-	"trailingComma": "none",
-	"printWidth": 100,
-	"svelteSortOrder": "scripts-options-styles-markup"
+  "useTabs": false,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "printWidth": 100,
+  "svelteSortOrder": "scripts-options-styles-markup"
 }

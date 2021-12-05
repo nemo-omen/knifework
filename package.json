@@ -7,18 +7,38 @@
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+    "start": "ts-node src/index.ts",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
     "@sveltejs/kit": "next",
+    "@types/node": "^8.0.29",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
-    "svelte": "^3.44.0"
+    "prisma": "^3.6.0",
+    "svelte": "^3.44.0",
+    "ts-node": "3.3.0",
+    "typescript": "^3.9.5"
   },
   "type": "module",
   "dependencies": {
-    "knex": "^0.95.14",
+    "@lukeed/uuid": "^2.0.0",
+    "@prisma/client": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "cookie": "^0.4.1",
+    "eslint": "^8.4.0",
+    "eslint-config-prettier": "^8.3.0",
+    "mysql2": "^2.3.3",
+    "pg": "^8.7.1",
+    "postgres": "github:porsager/postgres#esm",
+    "reflect-metadata": "^0.1.10",
+    "sass": "^1.44.0",
+    "svelte-preprocess": "^4.9.8",
+    "tslib": "^2.3.1",
+    "typeorm": "0.2.41",
     "xstate": "^4.26.1"
   }
 }
