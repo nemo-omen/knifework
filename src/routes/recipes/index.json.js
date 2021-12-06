@@ -2,9 +2,7 @@ import { prisma } from '$lib/services/prisma.service.js';
 
 export const get = async (params) => {
   let response = await prisma.recipes.findMany({
-    include: { notes: true }
-    // include: { recipe_tags: true },
-    // include: { recipe_ingredients: true }
+    include: { notes: true, recipe_tags: true, recipe_ingredients: true }
   });
 
   console.log('response: ', response);
@@ -12,9 +10,7 @@ export const get = async (params) => {
   if (response.length < 1) {
     addSeeds();
     response = await prisma.recipes.findMany({
-      include: { notes: true }
-      // include: { recipe_tags: true },
-      // include: { recipe_ingredients: true }
+      include: { notes: true, recipe_tags: true, recipe_ingredients: true }
     });
   }
 
