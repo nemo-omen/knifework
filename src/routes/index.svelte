@@ -1,29 +1,26 @@
 <script context="module">
-  export async function load({ page, fetch, session, stuff }) {
-    const response = await fetch('/recipes.json');
+	export async function load({ fetch }) {
+		const res = await fetch('/recipes.json');
 
-    if (response.ok) {
-      const recipes = await response.json();
+		if (res.ok) {
+			return {
+				props: {
+					recipes: await res.json()
+				}
+			};
+		}
 
-      return {
-        props: { recipes }
-      };
-    }
-
-    const { message } = await response.json();
-
-    return {
-      error: new Error(message)
-    };
-  }
+		return {
+			status: res.status,
+			error: new Error(res.error.message)
+		};
+	}
 </script>
 
-<script lang="ts">
-  import type { Recipe } from './recipes/_api';
-  export let recipes: Recipe[];
-  export let error: Error;
+<script>
+	export let recipes;
 
-  console.log('recipes: ', recipes);
+	console.log('recipes: ', recipes);
 </script>
 
-<main />
+<h1>Stuff</h1>
