@@ -1,12 +1,21 @@
 import { prisma } from '$lib/services/prisma.service.js';
 
 export const get = async (params) => {
-  const response = await prisma.recipes.findMany();
+  let response = await prisma.recipes.findMany({
+    include: { notes: true }
+    // include: { recipe_tags: true },
+    // include: { recipe_ingredients: true }
+  });
 
   console.log('response: ', response);
 
   if (response.length < 1) {
     addSeeds();
+    response = await prisma.recipes.findMany({
+      include: { notes: true }
+      // include: { recipe_tags: true },
+      // include: { recipe_ingredients: true }
+    });
   }
 
   if (response) {
@@ -63,5 +72,9 @@ const addSeeds = async () => {
     }
   });
 
-  console.log(pbj, gChz);
+  const manyTags = await prisma.tags.createMany({
+    data: [{ tag: 'cheap' }, { tag: 'easy' }, { tag: 'comfort food' }]
+  });
+
+  console.log(pbj, gChz, manyTags);
 };
