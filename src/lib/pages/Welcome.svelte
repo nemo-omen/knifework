@@ -9,48 +9,16 @@
   $: loaded = false;
   $: settings = userSettings;
 
-  window.electron.userSettingsResponse('userSettingsResponse', (event, data) => {
-    userSettings = data;
-    console.log('userSettings', userSettings);
-  });
-
   function gotoPage(page) {
     menuService.send({ type: 'GO', key: page });
   }
 
   onMount(() => {
-    userSettings = window.electron.getUserSettings();
-    if (userSettings) {
-      menuService.send({ type: 'GO', key: userSettings.lastPage });
-    }
     setTimeout(() => {
       loaded = true;
     }, 200);
   });
 </script>
-
-{#if loaded}
-  <div id="intro" class="center" in:fade>
-    <div id="intro-icon" in:fade>
-      <Icon name="knife" />
-    </div>
-    <h1 id="intro-heading">Knifework</h1>
-    <div class="three-up">
-      <button class="card card-welcome" on:click={() => gotoPage('recipes')}>
-        <Icon name="book" />
-        <h3>Recipes</h3>
-      </button>
-      <button class="card card-welcome" on:click={() => gotoPage('postrecipe')}>
-        <Icon name="add" />
-        <h3>New Recipe</h3>
-      </button>
-      <button class="card card-welcome" on:click={() => gotoPage('shopping')}>
-        <Icon name="cart" />
-        <h3>Shopping</h3>
-      </button>
-    </div>
-  </div>
-{/if}
 
 <style>
   #intro {
@@ -111,3 +79,26 @@
     transition: transform 0.2s ease-out;
   }
 </style>
+
+{#if loaded}
+  <div id="intro" class="center" in:fade>
+    <div id="intro-icon" in:fade>
+      <Icon name="knife" />
+    </div>
+    <h1 id="intro-heading">Knifework</h1>
+    <div class="three-up">
+      <button class="card card-welcome" on:click={() => gotoPage('recipes')}>
+        <Icon name="book" />
+        <h3>Recipes</h3>
+      </button>
+      <button class="card card-welcome" on:click={() => gotoPage('postrecipe')}>
+        <Icon name="add" />
+        <h3>New Recipe</h3>
+      </button>
+      <button class="card card-welcome" on:click={() => gotoPage('shopping')}>
+        <Icon name="cart" />
+        <h3>Shopping</h3>
+      </button>
+    </div>
+  </div>
+{/if}

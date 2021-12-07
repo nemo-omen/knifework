@@ -13,18 +13,19 @@
 
 <aside id="sidebar" class={$menuService.matches('expanded') ? 'expanded' : 'collapsed'}>
   <button
+    class="icon-button {current === 'recipes' ? 'current' : ''}"
+    on:click={() => toggleMenu('recipes')}
+  >
+    <Icon name="book" /> <span class="button-label">Recipes</span>
+  </button>
+
+  <button
     class="icon-button {current === 'postrecipe' ? 'current' : ''}"
     on:click={() => toggleMenu('postrecipe')}
   >
     <Icon name="add" /> <span class="button-label">New Recipe</span>
   </button>
 
-  <button
-    class="icon-button {current === 'recipes' ? 'current' : ''}"
-    on:click={() => toggleMenu('recipes')}
-  >
-    <Icon name="book" /> <span class="button-label">Recipes</span>
-  </button>
   <button
     class="icon-button {current === 'shopping' ? 'current' : ''}"
     on:click={() => toggleMenu('shopping')}

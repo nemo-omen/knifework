@@ -27,39 +27,6 @@
   <div class="page-content">
     {#if layout === 'grid'}
       <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
-      <h2>Grid</h2>
     {:else if layout === 'list'}
       <h2>List</h2>
     {/if}
