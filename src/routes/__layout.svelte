@@ -2,6 +2,7 @@
   // import '$lib/style/open-props.min.css';
   import '$lib/style/global.css';
   import Icon from '$lib/components/Icon.svelte';
+  import Sidebar from '$lib/components/Sidebar.svelte';
 </script>
 
 <header>
@@ -10,4 +11,8 @@
   <input type="text" placeholder="Search" />
 </header>
 
-<slot />
+<Sidebar />
+
+<main>
+  <slot />
+</main>
