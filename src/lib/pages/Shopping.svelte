@@ -5,11 +5,7 @@
   import { layout } from '$lib/stores/layout.store.js';
 </script>
 
-<section
-  class="page"
-  in:fade={{ duration: 400, delay: 250, easing: quintIn }}
-  out:fade={{ duration: 200, easing: quintIn }}
->
+<section class="page" in:fade={{ duration: 400, delay: 250, easing: quintIn }}>
   <div class="page-content">
     {#if $layout === 'grid'}
       <h2>Grid</h2>

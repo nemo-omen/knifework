@@ -45,40 +45,42 @@
   console.log('recipes: ', recipes);
 </script>
 
-<div id="content-header" class="content-sub-header">
-  {#if $menuService.context.currentMenu === 'recipes'}
-    <div class="page-heading">
-      <Icon name="book" />
-      <h2>Recipes</h2>
-    </div>
-    <div class="page-layout-control">
-      <button class="icon-control-button" on:click={() => setLayout('list')}>
-        <Icon name="list" />
-      </button>
-      <button class="icon-control-button" on:click={() => setLayout('grid')}>
-        <Icon name="grid" />
-      </button>
-    </div>
-  {:else if $menuService.context.currentMenu === 'shopping'}
-    <div class="page-heading">
-      <Icon name="cart" />
-      <h2>Shopping List</h2>
-    </div>
-    <div class="page-layout-control">
-      <button class="icon-control-button" on:click={() => setLayout('list')}>
-        <Icon name="list" />
-      </button>
-      <button class="icon-control-button" on:click={() => setLayout('grid')}>
-        <Icon name="grid" />
-      </button>
-    </div>
-  {:else if $menuService.context.currentMenu === 'postrecipe'}
-    <div class="page-heading">
-      <Icon name="add" />
-      <h2>New Recipe</h2>
-    </div>
-  {/if}
-</div>
+{#if $menuService.context.currentMenu !== 'welcome'}
+  <div id="content-header" class="content-sub-header">
+    {#if $menuService.context.currentMenu === 'recipes'}
+      <div class="page-heading">
+        <Icon name="book" />
+        <h2>Recipes</h2>
+      </div>
+      <div class="page-layout-control">
+        <button class="icon-control-button" on:click={() => setLayout('list')}>
+          <Icon name="list" />
+        </button>
+        <button class="icon-control-button" on:click={() => setLayout('grid')}>
+          <Icon name="grid" />
+        </button>
+      </div>
+    {:else if $menuService.context.currentMenu === 'shopping'}
+      <div class="page-heading">
+        <Icon name="cart" />
+        <h2>Shopping List</h2>
+      </div>
+      <div class="page-layout-control">
+        <button class="icon-control-button" on:click={() => setLayout('list')}>
+          <Icon name="list" />
+        </button>
+        <button class="icon-control-button" on:click={() => setLayout('grid')}>
+          <Icon name="grid" />
+        </button>
+      </div>
+    {:else if $menuService.context.currentMenu === 'postrecipe'}
+      <div class="page-heading">
+        <Icon name="add" />
+        <h2>New Recipe</h2>
+      </div>
+    {/if}
+  </div>
+{/if}
 
 {#if $menuService.context.currentMenu === 'recipes'}
   <Recipes />

@@ -1,6 +1,6 @@
 <script>
   import { fade } from 'svelte/transition';
-  import { quintIn } from 'svelte/easing';
+  import { quintIn, quintOut } from 'svelte/easing';
   import { onMount } from 'svelte';
   import { menuService } from '$lib/machines/menu.machine.js';
   import Icon from '$lib/components/Icon.svelte';
@@ -13,20 +13,13 @@
     menuService.send({ type: 'GO', key: page });
   }
 
-  // onMount(() => {
-  //   setTimeout(() => {
-  //     loaded = true;
-  //   }, 200);
-  // });
+  onMount(() => {
+    menuService.send('GO', { key: 'welcome' });
+  });
 </script>
 
 <!-- {#if loaded} -->
-<div
-  id="intro"
-  class="center"
-  in:fade={{ duration: 400, delay: 250, easing: quintIn }}
-  out:fade={{ duration: 200, easing: quintIn }}
->
+<div id="intro" class="center" in:fade={{ duration: 400, delay: 250, easing: quintIn }}>
   <div id="intro-icon">
     <Icon name="knife" />
   </div>
