@@ -20,7 +20,3 @@ export const get = async (params) => {
     };
   }
 };
-
-// keep this around to repopulate with a couple of default entries
-// when the db is empty
-const addSeeds = async () => {};
