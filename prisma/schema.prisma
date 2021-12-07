@@ -5,85 +5,71 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  // user     = env("DATABASE_USER")
-  // password = env("DATABASE_PASSWORD")
 }
 
-model ingredient_tags {
-  ingredient_id Int
-  tag_id        Int
-  ingredients   ingredients @relation(fields: [ingredient_id], references: [id], onDelete: Cascade)
-  tags          tags        @relation(fields: [tag_id], references: [id], onDelete: Cascade)
-
-  @@id([ingredient_id, tag_id])
+model Ingredient {
+  id                  Int                   @id @default(autoincrement())
+  name                String?               @unique @db.Char(255)
+  RecipeIngredients   RecipeIngredients[]
+  ShoppingIngredients ShoppingIngredients[]
 }
 
-model ingredients {
-  id                   Int                    @id @default(autoincrement())
-  name                 String?                @db.Char(255)
-  ingredient_tags      ingredient_tags[]
-  recipe_ingredients   recipe_ingredients[]
-  shopping_ingredients shopping_ingredients[]
-}
-
-model notes {
+model Note {
   id        Int     @id @default(autoincrement())
   text      String?
   recipe_id Int
-  recipes   recipes @relation(fields: [recipe_id], references: [id], onDelete: Cascade)
+  Recipe    Recipe  @relation(fields: [recipe_id], references: [id], onDelete: Cascade)
 }
 
-model recipe_ingredients {
+model RecipeIngredients {
   recipe_id     Int
   ingredient_id Int
-  ingredients   ingredients @relation(fields: [ingredient_id], references: [id], onDelete: Cascade)
-  recipes       recipes     @relation(fields: [recipe_id], references: [id], onDelete: Cascade)
+  Ingredient    Ingredient @relation(fields: [ingredient_id], references: [id], onDelete: Cascade)
+  Recipe        Recipe     @relation(fields: [recipe_id], references: [id], onDelete: Cascade)
 
   @@id([recipe_id, ingredient_id])
 }
 
-model recipe_tags {
-  recipe_id Int
-  tag_id    Int
-  recipes   recipes @relation(fields: [recipe_id], references: [id], onDelete: Cascade)
-  tags      tags    @relation(fields: [tag_id], references: [id], onDelete: Cascade)
-
-  @@id([recipe_id, tag_id])
+model Recipe {
+  id           Int                 @id @default(autoincrement())
+  name         String?             @unique @db.Char(255)
+  servings     Int?
+  preptime     Int?
+  cooktime     Int?
+  instructions String?
+  photourl     String?             @db.Char(255)
+  notes        Note[]
+  ingredients  RecipeIngredients[]
+  tags         RecipeTags[]
 }
 
-model recipes {
-  id                 Int                  @id @default(autoincrement())
-  name               String?              @db.Char(255)
-  servings           Int?
-  preptime           Int?
-  cooktime           Int?
-  instructions       String?
-  photourl           String?              @db.Char(255)
-  notes              notes[]
-  recipe_ingredients recipe_ingredients[]
-  recipe_tags        recipe_tags[]
+model ShoppingList {
+  id          Int                   @id @default(autoincrement())
+  listName    String                @db.Char(255)
+  ingredients ShoppingIngredients[]
 }
 
-model shopping {
-  id                   Int                    @id @default(autoincrement())
-  listName             String                 @db.Char(255)
-  shopping_ingredients shopping_ingredients[]
-}
-
-model shopping_ingredients {
+model ShoppingIngredients {
+  qty           Int?         @default(0)
+  size          String?      @db.Char(255)
+  Ingredient    Ingredient   @relation(fields: [ingredient_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  ShoppingList  ShoppingList @relation(fields: [shopping_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   shopping_id   Int
   ingredient_id Int
-  qty           Int?        @default(0)
-  size          String?     @db.Char(255)
-  ingredients   ingredients @relation(fields: [ingredient_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  shopping      shopping    @relation(fields: [shopping_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([shopping_id, ingredient_id])
 }
 
-model tags {
-  id              Int               @id @default(autoincrement())
-  tag             String            @db.Char(255)
-  ingredient_tags ingredient_tags[]
-  recipe_tags     recipe_tags[]
+model RecipeTags {
+  id        Int     @id @default(autoincrement())
+  Recipe    Recipe? @relation(fields: [recipe_id], references: [id], onDelete: Cascade)
+  Tag       Tag?    @relation(fields: [tag_id], references: [id], onDelete: Cascade)
+  recipe_id Int?
+  tag_id    Int?
+}
+
+model Tag {
+  id      Int           @id @default(autoincrement())
+  name     String       @unique @db.Char(255)
+  Recipes RecipeTags[]
 }
