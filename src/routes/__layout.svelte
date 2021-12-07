@@ -15,7 +15,7 @@
 <header>
   <div id="brand" on:click={sendToMain}><Icon name="knife" />Knifework</div>
 
-  <input type="text" placeholder="Search" />
+  <!-- <input type="text" placeholder="Search" /> -->
 </header>
 
 <Sidebar />
