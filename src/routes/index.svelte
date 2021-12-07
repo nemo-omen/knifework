@@ -18,9 +18,9 @@
 </script>
 
 <script>
-  export let recipes;
   import '$lib/style/global.css';
   import { menuService } from '$lib/machines/menu.machine.js';
+  import { layout } from '$lib/stores/layout.store.js';
   import Icon from '$lib/components/Icon.svelte';
   import Sidebar from '$lib/components/Sidebar.svelte';
   import Recipes from '$lib/pages/Recipes.svelte';
@@ -31,25 +31,59 @@
   import Settings from '$lib/pages/Settings.svelte';
   import PostRecipe from '$lib/pages/PostRecipe.svelte';
 
+  export let recipes;
   $: current = $menuService.context.currentMenu;
 
   function sendToMain() {
     menuService.send({ type: 'GO', key: 'welcome' });
   }
 
+  function setLayout(layoutKey) {
+    $layout = layoutKey;
+  }
+
   console.log('recipes: ', recipes);
 </script>
 
+<div id="content-header" class="content-sub-header">
+  {#if $menuService.context.currentMenu === 'recipes'}
+    <div class="page-heading">
+      <Icon name="book" />
+      <h2>Recipes</h2>
+    </div>
+    <div class="page-layout-control">
+      <button class="icon-control-button" on:click={() => setLayout('list')}>
+        <Icon name="list" />
+      </button>
+      <button class="icon-control-button" on:click={() => setLayout('grid')}>
+        <Icon name="grid" />
+      </button>
+    </div>
+  {:else if $menuService.context.currentMenu === 'shopping'}
+    <div class="page-heading">
+      <Icon name="cart" />
+      <h2>Shopping List</h2>
+    </div>
+    <div class="page-layout-control">
+      <button class="icon-control-button" on:click={() => setLayout('list')}>
+        <Icon name="list" />
+      </button>
+      <button class="icon-control-button" on:click={() => setLayout('grid')}>
+        <Icon name="grid" />
+      </button>
+    </div>
+  {:else if $menuService.context.currentMenu === 'postrecipe'}
+    <div class="page-heading">
+      <Icon name="add" />
+      <h2>New Recipe</h2>
+    </div>
+  {/if}
+</div>
+
 {#if $menuService.context.currentMenu === 'recipes'}
   <Recipes />
-{:else if $menuService.context.currentMenu === 'ingredients'}
-  <Ingredients />
-{:else if $menuService.context.currentMenu === 'equipment'}
-  <Equipment />
 {:else if $menuService.context.currentMenu === 'shopping'}
   <Shopping />
-{:else if $menuService.context.currentMenu === 'settings'}
-  <Settings />
 {:else if $menuService.context.currentMenu === 'postrecipe'}
   <PostRecipe />
 {:else if $menuService.context.currentMenu === 'welcome'}

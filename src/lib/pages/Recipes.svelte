@@ -1,33 +1,18 @@
 <script>
-  import Icon from '$lib/components/Icon.svelte';
-
-  let layout = 'grid';
-
-  function setLayout(layoutKey) {
-    layout = layoutKey;
-  }
+  import { fade } from 'svelte/transition';
+  import { quintIn } from 'svelte/easing';
+  import { layout } from '$lib/stores/layout.store.js';
 </script>
 
-<section class="page">
-  <div id="content-header" class="content-sub-header">
-    <div class="page-heading">
-      <Icon name="book" />
-      <h2>Recipes</h2>
-    </div>
-    <div class="page-layout-control">
-      <button class="icon-control-button" on:click={() => setLayout('list')}>
-        <Icon name="list" />
-      </button>
-      <button class="icon-control-button" on:click={() => setLayout('grid')}>
-        <Icon name="grid" />
-      </button>
-    </div>
-  </div>
-
+<section
+  class="page"
+  in:fade={{ duration: 400, delay: 250, easing: quintIn }}
+  out:fade={{ duration: 200, easing: quintIn }}
+>
   <div class="page-content">
-    {#if layout === 'grid'}
+    {#if $layout === 'grid'}
       <h2>Grid</h2>
-    {:else if layout === 'list'}
+    {:else if $layout === 'list'}
       <h2>List</h2>
     {/if}
   </div>

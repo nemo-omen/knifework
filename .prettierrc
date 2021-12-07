@@ -3,5 +3,5 @@
   "singleQuote": true,
   "trailingComma": "none",
   "printWidth": 100,
-  "svelteSortOrder": "scripts-options-styles-markup"
+  "svelteSortOrder": "scripts-options-markup-styles"
 }

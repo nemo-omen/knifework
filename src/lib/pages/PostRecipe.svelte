@@ -1,14 +1,15 @@
 <script>
+  import { fade } from 'svelte/transition';
+  import { quintIn } from 'svelte/easing';
   import Icon from '$lib/components/Icon.svelte';
 </script>
 
-<section class="page">
-  <div id="content-header" class="sub-header content-sub-header">
-    <div class="page-heading">
-      <Icon name="add" />
-      <h2>New Recipe</h2>
-    </div>
+<section
+  class="page"
+  in:fade={{ duration: 400, delay: 250, easing: quintIn }}
+  out:fade={{ duration: 200, easing: quintIn }}
+>
+  <div class="page-content">
+    <h2>Stuff</h2>
   </div>
-
-  <div class="page-content" />
 </section>
