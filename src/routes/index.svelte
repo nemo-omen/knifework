@@ -63,7 +63,7 @@
     {:else if $menuService.context.currentMenu === 'shopping'}
       <div class="page-heading">
         <Icon name="cart" />
-        <h2>Shopping List</h2>
+        <h2>Shopping Lists</h2>
       </div>
       <div class="page-layout-control">
         <button class="icon-control-button" on:click={() => setLayout('list')}>

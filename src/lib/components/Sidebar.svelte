@@ -30,6 +30,6 @@
     class="icon-button {current === 'shopping' ? 'current' : ''}"
     on:click={() => toggleMenu('shopping')}
   >
-    <Icon name="cart" /> <span class="button-label">Shopping List</span>
+    <Icon name="cart" /> <span class="button-label">Shopping Lists</span>
   </button>
 </aside>
