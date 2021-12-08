@@ -15,7 +15,7 @@ async function main() {
       name: 'Peanut Butter and Jelly Sandwich',
       instructions:
         'Spread peanut button on one piece of bread. Spread jelly on the other. Place both slices of bread together so the peanut butter and jelly are inside.',
-      photourl: null,
+      photourl: '/images/pbj.jpg',
       servings: 1,
       preptime: 5,
       cooktime: 0,
@@ -80,7 +80,7 @@ async function main() {
       name: 'Grilled Cheese Sandwich',
       instructions:
         'Place American cheese slices between two slices of bread. Heat skillet on medium-high heat. Melt butter and grill sandwich for two or three minutes on each side - until golden brown.',
-      photourl: null,
+      photourl: '/images/grilled-cheese.jpg',
       servings: 1,
       preptime: 3,
       cooktime: 6,

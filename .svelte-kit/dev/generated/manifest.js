@@ -10,6 +10,8 @@ export const routes = [
 	// src/routes/index.svelte
 	[/^\/$/, [c[0], c[2]], [c[1]]],
 
+	,
+
 	
 ];
 
