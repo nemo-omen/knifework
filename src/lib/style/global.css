@@ -114,6 +114,7 @@ main {
   border-left: 1px solid var(--dark);
   padding-inline: 1rem;
   height: 3rem;
+  z-index: 300;
 }
 
 .page {

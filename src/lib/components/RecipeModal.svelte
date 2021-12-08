@@ -34,8 +34,8 @@
       </button>
     </div>
   </div>
-  <div class="recipe-info">
-    {#if recipe.image}
+  <div class="recipe-hero">
+    {#if recipe.photourl}
       <img class="recipe-image" src={recipe.photourl} width="800" height="450" alt={recipe.name} />
     {/if}
 
@@ -43,9 +43,9 @@
       <h3>Serves</h3>
       <p>{recipe.servings}</p>
       <h3>Prep Time</h3>
-      <p>{recipe.preptime}</p>
+      <p>{recipe.preptime} minutes</p>
       <h3>Cook Time</h3>
-      <p>{recipe.cooktime}</p>
+      <p>{recipe.cooktime} minutes</p>
       <h3>Ingredients</h3>
       <ul class="recipe-list">
         {#each recipe.ingredients as ingredient}
@@ -54,6 +54,7 @@
       </ul>
     </div>
   </div>
+  <div class="recipe-info" />
 </div>
 
 <style>
@@ -65,16 +66,22 @@
     top: 1rem;
     left: 10vw;
     right: 10vw;
-    bottom: 1rem;
     background-color: var(--gray-8);
     border-radius: 1rem;
     box-shadow: var(--shadow-4);
-    padding: 1rem;
+    padding: 2rem 2.25rem;
   }
 
   .modal-head {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .modal-head h2 {
+    line-height: var(--font-lineheight-00);
+    margin: 0;
+    padding: 0;
   }
 
   .modal-control {
@@ -89,20 +96,23 @@
     padding: 0.25rem;
     border-radius: var(--radius-2);
     border: 1px solid var(--gray-7);
-    /* box-shadow: var(--shadow-2); */
-    /* background-color: var(--gray-8); */
   }
 
   .recipe-info {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    /* display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: end; */
-    /* grid-gap: 10vw; */
-    /* max-width: 60%; */
-    /* margin: 0 auto; */
+  }
+
+  .recipe-hero {
+    display: flex;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* grid-gap: 4rem; */
+    justify-content: space-between;
+  }
+
+  .recipe-prep {
+    text-align: right;
   }
 
   .recipe-list {
