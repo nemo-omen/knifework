@@ -20,16 +20,16 @@
   </button>
 
   <button
-    class="icon-button {current === 'postrecipe' ? 'current' : ''}"
-    on:click={() => toggleMenu('postrecipe')}
-  >
-    <Icon name="add" /> <span class="button-label">New Recipe</span>
-  </button>
-
-  <button
     class="icon-button {current === 'shopping' ? 'current' : ''}"
     on:click={() => toggleMenu('shopping')}
   >
     <Icon name="cart" /> <span class="button-label">Shopping Lists</span>
+  </button>
+
+  <button
+    class="icon-button {current === 'postrecipe' ? 'current' : ''}"
+    on:click={() => toggleMenu('postrecipe')}
+  >
+    <Icon name="add" /> <span class="button-label">New Recipe</span>
   </button>
 </aside>
