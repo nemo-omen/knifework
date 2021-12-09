@@ -2,6 +2,7 @@
   import { fade } from 'svelte/transition';
   import { quintIn } from 'svelte/easing';
   import Icon from '$lib/components/Icon.svelte';
+  import { menuService } from '$lib/machines/menu.machine.js';
 
   let name;
   $: servings = 0;
@@ -43,7 +44,7 @@
   }
 
   function closeModal() {
-    console.log('TODO!!');
+    menuService.send('GO', { key: 'recipes' });
   }
 
   function saveRecipe() {
