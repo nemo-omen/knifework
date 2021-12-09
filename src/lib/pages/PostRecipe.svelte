@@ -20,10 +20,18 @@
 <section class="page" in:fade={{ duration: 400, delay: 250, easing: quintIn }}>
   <div class="page-content">
     <div class="recipe-form">
-      <div class="input-group">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name" bind:value={name} />
+      <div class="form-group">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" bind:value={name} />
+        </div>
+        <div class="form-image">
+          <button class="icon-button no-bg huge">
+            <Icon name="image" />
+          </button>
+        </div>
       </div>
+
       <div class="input-group third">
         <span>Servings</span>
         <div class="button-group">
@@ -42,9 +50,9 @@
 
 <style>
   .recipe-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     position: absolute;
     top: 1rem;
     left: 15vw;
@@ -54,15 +62,42 @@
     box-shadow: var(--shadow-4);
     padding: 2rem 2.25rem;
   }
-  .input-group {
+  .form-group {
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    gap: 3rem;
+  }
+
+  .form-image {
+    aspect-ratio: 16/9;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 1rem;
+    border: 1px solid var(--gray-6);
+    border-radius: var(--radius-2);
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .input-group input {
+    /* order: 1; */
+  }
+
+  .input-group label {
+    padding-inline: 0.5rem;
+    /* order: 2; */
   }
 
   .third {
+    display: grid;
     grid-template-columns: auto 1fr 10%;
+    align-items: center;
+    max-width: 50%;
   }
 
   .button-group {
@@ -76,5 +111,13 @@
 
   .no-bg {
     background-color: transparent;
+  }
+
+  .huge {
+    font-size: 4rem;
+    justify-self: end;
+    padding: 0;
+    margin: 0;
+    color: var(--gray-6);
   }
 </style>
