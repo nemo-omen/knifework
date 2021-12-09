@@ -36,7 +36,7 @@
   </div>
   <div class="recipe-hero">
     {#if recipe.photourl}
-      <img class="recipe-image" src={recipe.photourl} width="700" height="400" alt={recipe.name} />
+      <img class="recipe-image" src={recipe.photourl} width="600" height="350" alt={recipe.name} />
     {/if}
 
     <div class="recipe-prep">
@@ -55,7 +55,9 @@
     </div>
   </div>
   <div class="recipe-info">
-    {@html instructionsHtml}
+    <div class="recipe-instructions">
+      {@html instructionsHtml}
+    </div>
   </div>
 </div>
 
@@ -63,7 +65,7 @@
   .modal {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
     position: absolute;
     top: 1rem;
     left: 15vw;
@@ -101,13 +103,16 @@
   }
 
   .recipe-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 80ch;
+    display: grid;
+    grid-template-columns: 600px auto;
+    gap: 3rem;
   }
 
-  :global(.recipe-info p) {
+  :global(recipe-instructions > * + *) {
+    margin-top: 2rem;
+  }
+
+  :global(.recipe-instructions p) {
     line-height: 1.5em;
     font-size: 1.5rem;
   }
@@ -115,6 +120,7 @@
   .recipe-hero {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   .recipe-prep {
@@ -129,13 +135,17 @@
   .recipe-list li {
     margin: 1rem 0;
   }
-  h2,
+
+  h2 {
+    font-size: 2rem;
+  }
+
   h3 {
     text-decoration: underline;
     text-underline-offset: 0.3em;
   }
 
-  h2 {
-    font-size: 2rem;
+  img {
+    border-radius: var(--radius-3);
   }
 </style>
