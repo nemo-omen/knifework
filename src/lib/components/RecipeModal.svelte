@@ -1,21 +1,21 @@
-<!-- <script context="module">
-  export async function load({fetch}) {
-
-  }
-</script> -->
 <script>
   import { onMount } from 'svelte';
+  import { browser } from '$app/env';
   import { fade } from 'svelte/transition';
   import { quintIn, quintOut } from 'svelte/easing';
   import { createEventDispatcher } from 'svelte';
   import Icon from './Icon.svelte';
   const dispatch = createEventDispatcher();
   export let recipe;
-  console.log(recipe);
 
-  // onMount(async () => {
-  //   const response = await fetch(`/recipes/${recipe.id}.json`);
-  // });
+  let instructionsHtml = ``;
+
+  if (recipe?.instructions) {
+    let instArr = recipe.instructions.split('\n');
+    for (let line of instArr) {
+      instructionsHtml += `<p>${line}</p>`;
+    }
+  }
 </script>
 
 <div
@@ -36,7 +36,7 @@
   </div>
   <div class="recipe-hero">
     {#if recipe.photourl}
-      <img class="recipe-image" src={recipe.photourl} width="800" height="450" alt={recipe.name} />
+      <img class="recipe-image" src={recipe.photourl} width="700" height="400" alt={recipe.name} />
     {/if}
 
     <div class="recipe-prep">
@@ -54,7 +54,9 @@
       </ul>
     </div>
   </div>
-  <div class="recipe-info" />
+  <div class="recipe-info">
+    {@html instructionsHtml}
+  </div>
 </div>
 
 <style>
@@ -64,8 +66,8 @@
     gap: 2rem;
     position: absolute;
     top: 1rem;
-    left: 10vw;
-    right: 10vw;
+    left: 15vw;
+    right: 15vw;
     background-color: var(--gray-8);
     border-radius: 1rem;
     box-shadow: var(--shadow-4);
@@ -102,12 +104,16 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    max-width: 80ch;
+  }
+
+  :global(.recipe-info p) {
+    line-height: 1.5em;
+    font-size: 1.5rem;
   }
 
   .recipe-hero {
     display: flex;
-    /* grid-template-columns: repeat(2, 1fr); */
-    /* grid-gap: 4rem; */
     justify-content: space-between;
   }
 

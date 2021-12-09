@@ -6,7 +6,13 @@ const config = {
   preprocess: sveltePreprocess(),
   kit: {
     ssr: false,
-    adapter: adapter()
+    adapter: adapter(),
+    vite: () => ({
+      optimizeDeps: {
+        include: ['remark', 'remark-rehype', 'rehype-stringify'],
+        keepNames: true
+      }
+    })
 
     // hydrate the <div id="svelte"> element in src/app.html
     // target: '#svelte'

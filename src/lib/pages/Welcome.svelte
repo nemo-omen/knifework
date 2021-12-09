@@ -88,15 +88,11 @@
   }
 
   button {
-    border: 2px solid var(--accent-secondary);
     color: var(--accent-secondary);
-    background: transparent;
     padding: 0.5rem 1rem;
     font-size: 1.5rem;
-    /* border: none; */
-    border-radius: 5rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease-out;
+    box-shadow: none;
   }
 </style>
