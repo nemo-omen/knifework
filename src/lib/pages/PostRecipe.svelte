@@ -157,10 +157,6 @@
     font-size: 1.25rem;
   }
 
-  .input-group label {
-    padding-inline: 0.5rem;
-  }
-
   .button-group {
     display: flex;
     justify-self: end;
