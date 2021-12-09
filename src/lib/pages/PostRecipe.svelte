@@ -41,6 +41,14 @@
   function handleImageUpload() {
     console.log('TODO!!!');
   }
+
+  function closeModal() {
+    console.log('TODO!!');
+  }
+
+  function saveRecipe() {
+    console.log('TODO!!!');
+  }
 </script>
 
 <section class="page" in:fade={{ duration: 400, delay: 250, easing: quintIn }}>
@@ -105,7 +113,16 @@
 
       <div class="form-group notes">
         <label for="instructions">Notes</label>
-        <textarea name="instructions" id="instructions" cols="30" rows="10" />
+        <textarea name="instructions" id="instructions" rows="10" />
+      </div>
+
+      <div class="form-footer">
+        <button class="icon-button no-bg" on:click={closeModal}>
+          <Icon name="close" />
+        </button>
+        <button class="icon-button no-bg" on:click={saveRecipe}>
+          <Icon name="save" />
+        </button>
       </div>
     </div>
     <!--/form-->
@@ -149,6 +166,14 @@
     background-color: var(--gray-9);
   }
 
+  .form-footer {
+    grid-column: 1/3;
+    display: flex;
+    justify-content: flex-end;
+    /* gap: 1rem; */
+    font-size: 1.5rem;
+  }
+
   .input-group {
     display: flex;
     justify-content: space-between;
@@ -175,5 +200,9 @@
     padding: 0;
     margin: 0;
     color: var(--gray-6);
+  }
+
+  input[type='text'] {
+    width: 80%;
   }
 </style>
