@@ -1,24 +1,9 @@
 <script>
   import { fade } from 'svelte/transition';
   import { quintIn, quintOut } from 'svelte/easing';
-  import { onMount } from 'svelte';
-  import { menuService } from '$lib/machines/menu.machine.js';
   import Icon from '$lib/components/Icon.svelte';
-
-  let userSettings;
-  // $: loaded = false;
-  // $: settings = userSettings;
-
-  function gotoPage(page) {
-    menuService.send({ type: 'GO', key: page });
-  }
-
-  onMount(() => {
-    menuService.send('GO', { key: 'welcome' });
-  });
 </script>
 
-<!-- {#if loaded} -->
 <div id="intro" class="center" in:fade={{ duration: 400, delay: 250, easing: quintIn }}>
   <div id="intro-icon">
     <Icon name="knife" />
@@ -40,7 +25,6 @@
   </div>
 </div>
 
-<!-- {/if} -->
 <style>
   #intro {
     gap: 1rem;

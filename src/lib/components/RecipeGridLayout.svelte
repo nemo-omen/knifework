@@ -11,13 +11,19 @@
 
 <div class="card-grid">
   {#each Object.values($recipeStore) as recipe}
-    <div class="card" on:click={() => openRecipe(recipe.id)}>
+    <a class="card" href="/recipes/{recipe.id}">
       <h3>{recipe.name}</h3>
       <div class="recipe-body">
         <p>Servings: {recipe.servings}</p>
         <p>Prep Time: {recipe.preptime} minutes</p>
         <p>Cook Time: {recipe.cooktime} minutes</p>
       </div>
-    </div>
+    </a>
   {/each}
 </div>
+
+<style>
+  .card {
+    color: var(--light);
+  }
+</style>

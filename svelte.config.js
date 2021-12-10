@@ -9,10 +9,12 @@ const config = {
     ssr: false,
     adapter: adapter({ out: 'dist' }),
     vite: () => ({
-      optimizeDeps: {
-        include: ['remark', 'remark-rehype', 'rehype-stringify'],
-        keepNames: true
-      }
+      // optimizeDeps: {
+      //   include: ['pg'],
+      //   esbuildOptions: {
+      //     keepNames: true
+      //   }
+      // }
     })
 
     // hydrate the <div id="svelte"> element in src/app.html

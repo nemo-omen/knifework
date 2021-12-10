@@ -7,17 +7,7 @@ export const get = async (params) => {
       ingredients: { include: { Ingredient: true } },
       notes: true
     }
-    // include: { notes: true, tags: true, ingredients: true }
   });
-
-  // console.log('response: ', response);
-
-  // if (response.length < 1) {
-  //   addSeeds();
-  //   response = await prisma.recipes.findMany({
-  //     include: { notes: true, tags: true, ingredients: true }
-  //   });
-  // }
 
   if (response) {
     return {
