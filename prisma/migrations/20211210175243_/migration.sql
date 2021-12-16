@@ -1,54 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `ingredients` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `notes` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `recipe_ingredients` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `recipes` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `shopping` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `shopping_ingredients` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `tags` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "notes" DROP CONSTRAINT "notes_recipe_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "recipe_ingredients" DROP CONSTRAINT "recipe_ingredients_ingredient_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "recipe_ingredients" DROP CONSTRAINT "recipe_ingredients_recipe_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "shopping_ingredients" DROP CONSTRAINT "shopping_ingredients_ingredient_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "shopping_ingredients" DROP CONSTRAINT "shopping_ingredients_shopping_id_fkey";
-
--- DropForeignKey
-ALTER TABLE "tags" DROP CONSTRAINT "tags_recipe_id_fkey";
-
--- DropTable
-DROP TABLE "ingredients";
-
--- DropTable
-DROP TABLE "notes";
-
--- DropTable
-DROP TABLE "recipe_ingredients";
-
--- DropTable
-DROP TABLE "recipes";
-
--- DropTable
-DROP TABLE "shopping";
-
--- DropTable
-DROP TABLE "shopping_ingredients";
-
--- DropTable
-DROP TABLE "tags";
-
 -- CreateTable
 CREATE TABLE "Ingredient" (
     "id" SERIAL NOT NULL,
@@ -117,7 +66,7 @@ CREATE TABLE "RecipeTags" (
 -- CreateTable
 CREATE TABLE "Tag" (
     "id" SERIAL NOT NULL,
-    "tag" CHAR(255) NOT NULL,
+    "name" CHAR(255) NOT NULL,
 
     CONSTRAINT "Tag_pkey" PRIMARY KEY ("id")
 );
@@ -129,7 +78,7 @@ CREATE UNIQUE INDEX "Ingredient_name_key" ON "Ingredient"("name");
 CREATE UNIQUE INDEX "Recipe_name_key" ON "Recipe"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Tag_tag_key" ON "Tag"("tag");
+CREATE UNIQUE INDEX "Tag_name_key" ON "Tag"("name");
 
 -- AddForeignKey
 ALTER TABLE "Note" ADD CONSTRAINT "Note_recipe_id_fkey" FOREIGN KEY ("recipe_id") REFERENCES "Recipe"("id") ON DELETE CASCADE ON UPDATE CASCADE;

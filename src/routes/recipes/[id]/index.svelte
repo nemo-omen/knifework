@@ -78,6 +78,12 @@
 </div>
 
 <style>
+  .page {
+    padding: 5rem 20vw;
+  }
+  .page > * + * {
+    margin-top: 3rem;
+  }
   .modal {
     display: flex;
     flex-direction: column;
